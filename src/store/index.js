@@ -34,24 +34,6 @@ export default createStore({
         })
       }
       console.log("路由添加后", router.getRoutes())
-    },
-    //注销
-    logout({ commit, state }) {
-      return new Promise((resolve) => {
-        console.log(state.userInfo.token, "注销了")
-        const delRouterList = JSON.parse(state.userInfo.routerList)
-        delRouterList.forEach((route) => {
-          router.removeRoute(route.name)
-        })
-        //删除路由
-        commit("SET_USER_INFO", {
-          userName: "",
-          password: "",
-          token: "",
-          routerList: []
-        })
-        resolve()
-      })
     }
   },
   actions: {
@@ -87,6 +69,27 @@ export default createStore({
     //添加路由
     addRoute({ commit }) {
       commit("ADD_ROUTE")
+    },
+    //注销
+    logout({ commit, state }) {
+      return new Promise((resolve) => {
+        console.log(state.userInfo.token, "注销了")
+        //拷贝一下
+        const delRouterList = JSON.parse(
+          JSON.stringify(state.userInfo.routerList)
+        )
+        delRouterList.forEach((route) => {
+          router.removeRoute(route.name)
+        })
+        //删除路由
+        commit("SET_USER_INFO", {
+          userName: "",
+          password: "",
+          token: "",
+          routerList: []
+        })
+        resolve("注销 success， 清空路由，用户信息")
+      })
     }
   },
   modules: {},

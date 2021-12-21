@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <el-button @click="layout">注销</el-button>
-    登陆用户名：{{store.state.userInfo.username}}
+    登陆用户名：{{ store.state.userInfo.username }}
     <div class="main">
       <div class="p-side-bar">
         <el-menu :default-active="$route.path" :router="true">
@@ -22,7 +22,7 @@
 <script setup>
 import { ref } from "vue"
 import { useRouter } from "vue-router"
-import {useStore} from 'vuex'
+import { useStore } from "vuex"
 
 const router = useRouter()
 const store = useStore()
@@ -44,9 +44,10 @@ const initMenu = () => {
 }
 initMenu()
 //注销
-const layout = () => {
-  store.dispatch('logout')
-  router.push({ path: "/login" })
+const layout = async () => {
+  const res = await store.dispatch("logout")
+  console.log(49, res)
+  await router.push({ path: "/login" })
 }
 </script>
 
