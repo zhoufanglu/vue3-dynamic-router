@@ -78,6 +78,7 @@ export default createStore({
         const delRouterList = JSON.parse(
           JSON.stringify(state.userInfo.routerList)
         )
+        //删除添加的路由，如果路由是多层的 递归下。。
         delRouterList.forEach((route) => {
           router.removeRoute(route.name)
         })

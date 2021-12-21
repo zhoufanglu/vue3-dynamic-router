@@ -31,15 +31,13 @@ const menuList = ref([])
 
 //初始化路由
 const initMenu = () => {
-  const routerList = router.getRoutes()
+  const routerList = router.getRoutes() //这里获取到的route对象与router3.x的版本不一样，需要注意下
   menuList.value = routerList.filter((route) => {
-    console.log(34, route.meta)
     const isSidebar = route.meta.isSideBar ? route.meta.isSideBar : 0
     if (isSidebar) {
       return route
     }
   })
-  //menuList.value = routerList
   console.log(32, routerList)
 }
 initMenu()

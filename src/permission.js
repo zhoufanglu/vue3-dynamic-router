@@ -14,9 +14,9 @@ router.beforeEach(async (to, from, next) => {
   console.log("用户角色", username ? username : "未登陆")
   //有用户信息
   if (username) {
+    //触发添加路由方法，里面会判断是否需要添加
     await store.dispatch("addRoute")
     let { routerList } = userInfo
-    console.log(19, routerList)
     //根据to.name来判断是否为动态路由, 是否有人知道还有更好的判断方法？
     if (!to.name) {
       //当前路由是动态的，确定是有的, 有就跳自己，没有就跳404,, tip: 刷新后动态路由的to.name为空

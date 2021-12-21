@@ -39,6 +39,7 @@ const onSubmit = () => {
     alert("请先选择角色！")
     return false
   }
+  //触发登陆，保存信息，添加路由
   store.dispatch("login", userInfo.value).then(() => {
     console.log("登陆跳转")
     router.push({ path: "/home" })
