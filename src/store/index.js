@@ -43,14 +43,14 @@ export default createStore({
       return new Promise((resolve) => {
         //模拟登陆，获取用户信息， 权限路由列表
         //假设返回的有token, 路由列表(根据不同用户返回不同)
-        /**********************模拟后端传过来的路由列表----S***********************/
+        /**********************模拟后端传过来的路由列表----START***********************/
         let routerList = []
         if (username === "admin") {
           routerList = authRouter
         } else if (username === "commonUser") {
           routerList = [authRouter[0]]
         }
-        /**********************模拟后端传过来的路由列表----E***********************/
+        /**********************模拟后端传过来的路由列表----END***********************/
         let token = "testToken"
         console.log(56, routerList)
         //把用户信息存入vuex

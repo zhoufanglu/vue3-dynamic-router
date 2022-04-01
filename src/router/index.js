@@ -11,7 +11,17 @@ export const authRouter = [
     component: "allSeePage",
     meta: {
       isSideBar: 1
-    }
+    },
+    children: [
+      {
+        path: "/allSeePage/allSeePageChild",
+        name: "allSeePageChild",
+        component: "allSeePageChild/allSeePageChild",
+        mata: {
+          isSideBar: 1
+        }
+      }
+    ]
   },
   {
     path: "/adminPage",

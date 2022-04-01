@@ -7,3 +7,6 @@
 
 ## 项目启动
 `npm i`, `npm run serve`
+
+## 更新
+* 2022-4-1, 更新了子路由添加 `allSeePageChild.vue`的添加方式
